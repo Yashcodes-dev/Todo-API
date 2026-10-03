@@ -5,9 +5,9 @@ const app = express();
 
 app.use(express.json())
 
-app.get("/api/todo",(req, res)=>{
-    res.send("Todo API is working fine")
-})
+// app.get("/api/todo",(req, res)=>{
+//     res.send("Todo API is working fine")
+// })
 
 
 export {app} 
