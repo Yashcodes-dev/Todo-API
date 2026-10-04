@@ -1,122 +1,59 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import React from "react";
+import { Plus, ListFilter } from "lucide-react";
+import Todo from "./components/todo";
+import EmptyState from "./components/EmptyState";
+import TodoForm from "./components/TodoForm";
+import TodoList from "./components/TodoList";
+import { useState } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
+
+
+const App = () => {
+
+    const [showForm, setShowForm] = useState(false);
+
+    const [todos, setTodos] = useState([]);
+
+    const addTodo = (todo) => {
+      setTodos((prev) => [...prev, todo]);
+      setShowForm(false);
+    }
 
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
+      <div className="py-10 px-20">
         <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+          <h1 className="text-2xl text-[#0f0f0f]">TO-DO</h1>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+          <hr className="mt-4 border-gray-300" />
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+        <div className="mt-7 mb-7 flex gap-4">
+          <button 
+          onClick={()=>{ setShowForm((prev)=>!prev) 
+            console.log(showForm)
+          }}
+          className="flex cursor-pointer  items-center gap-2 rounded-xl bg-[#3b41d1] px-4 py-2 text-white">
+            <Plus size={18} />
+            New Task
+          </button>
+
+          <button className="flex cursor-pointer items-center gap-2 rounded-xl border-gray-200 border-2 bg-white px-4 py-2 text-[#0f0f0f]">
+            <ListFilter size={13} />
+            Filter
+          </button>
+        </div>
+
+        {/* <Todo/> */}
+        {/* {!showForm && <EmptyState/>} */}
+        {showForm && <TodoForm 
+         onAddTodo={addTodo}
+          onClose={() => setShowForm(false)}/> }
+
+          <TodoList todos={todos}/>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
