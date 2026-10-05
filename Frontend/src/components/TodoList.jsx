@@ -4,12 +4,12 @@ import Todo from "./todo";
 const TodoList = ({ todos }) => {
   return (
 
-    <div>
+    <div className="space-y-8">
       {todos.map((todo) => (
         <Todo key={todo.id} todo={todo} />
       ))}
     </div>
-    
+
   )
 }
 

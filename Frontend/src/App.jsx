@@ -45,7 +45,7 @@ const App = () => {
         </div>
 
         {/* <Todo/> */}
-        {/* {!showForm && <EmptyState/>} */}
+        {todos.length === 0 && !showForm && <EmptyState/>}
         {showForm && <TodoForm 
          onAddTodo={addTodo}
           onClose={() => setShowForm(false)}/> }
@@ -55,5 +55,6 @@ const App = () => {
     </>
   );
 };
+
 
 export default App;
