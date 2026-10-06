@@ -1,6 +1,6 @@
 import { Pencil, Trash2 } from "lucide-react";
 
-const Todo = ({todo}) => {
+const Todo = ({todo, onDeleteTodo}) => {
   return (
     <div className="flex items-start justify-between gap-4 rounded-xl py-4 pl-3 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
       
@@ -32,7 +32,9 @@ const Todo = ({todo}) => {
           <Pencil size={17} />
         </button>
 
-        <button className="rounded-md p-2 text-gray-600 hover:bg-gray-100">
+        <button
+        onClick={()=>onDeleteTodo(todo.id)}
+         className="rounded-md p-2 text-gray-600 hover:bg-gray-100">
           <Trash2 size={17} />
         </button>
       </div>

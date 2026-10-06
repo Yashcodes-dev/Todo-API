@@ -52,7 +52,7 @@ const TodoForm = ({onClose, onAddTodo }) => {
         </button>
 
         <button 
-        onClick={() => onAddTodo({ id: Date.now(),title, description })}
+        onClick={() => onAddTodo({ id: Date.now(),title, description , completed: false})}
         className="rounded-md bg-[#3b41d1] px-4 py-2 text-white cursor-pointer">
           Add Task
         </button>
