@@ -47,13 +47,13 @@ const TodoForm = ({onClose, onAddTodo }) => {
       <div className="mt-5 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
         <button 
         onClick={onClose}
-        className="rounded-md border border-gray-300 px-4 py-2 text-[#0f0f0f] cursor-pointer">
+        className="rounded-md border border-gray-300 px-4 py-2 text-[#0f0f0f] cursor-pointer active:scale-95 transition duration-200 ease-in-out">
           Cancel
         </button>
 
         <button 
         onClick={() => onAddTodo({ id: Date.now(),title, description , completed: false})}
-        className="rounded-md bg-[#3b41d1] px-4 py-2 text-white cursor-pointer">
+        className="rounded-md bg-[#3b41d1] px-4 py-2 text-white cursor-pointer hover:text-[#3b41d1] hover:bg-white hover:border-[#3b41d1]  transition duration-200 ease-in-out active:scale-95">
           Add Task
         </button>
       </div>

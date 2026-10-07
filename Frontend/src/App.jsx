@@ -47,18 +47,19 @@ const App = () => {
         </div>
 
         <div className="mt-7 mb-7 flex gap-4">
+
           <button
             onClick={() => {
               setShowForm((prev) => !prev);
-              console.log(showForm);
+              // console.log(showForm);
             }}
-            className="flex cursor-pointer  items-center gap-2 rounded-xl bg-[#3b41d1] px-4 py-2 text-white"
+            className="flex cursor-pointer  items-center gap-2 rounded-xl bg-[#3b41d1] hover:text-[#3b41d1] hover:bg-white hover:border-[#3b41d1]  transition duration-200 ease-in-out active:scale-95 px-4 h-9 py-1 text-white"
           >
             <Plus size={18} />
             New Task
           </button>
 
-          <button className="flex cursor-pointer items-center gap-2 rounded-xl border-gray-200 border-2 bg-white px-4 py-2 text-[#0f0f0f]">
+          <button className="flex cursor-pointer gap-2 items-center rounded-xl border-gray-200 border-2 bg-white px-4 h-9 p-1 text-[#0f0f0f] hover:scale-96 transition duration-200 ease-in-out">
             <ListFilter size={13} />
             Filter
           </button>
