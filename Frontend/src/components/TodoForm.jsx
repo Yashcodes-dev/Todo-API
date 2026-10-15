@@ -14,7 +14,7 @@ const TodoForm = ({onClose, onAddTodo }) => {
 <div className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-lg border border-gray-200 bg-white p-4 sm:p-6">        
    <h2 className="text-xl font-semibold text-[#0f0f0f]">
         Create New Task
-      </h2>
+      </h2> 
 
       <div className="mt-5">
         <label className="text-sm font-medium text-[#0f0f0f]">

@@ -14,7 +14,7 @@ const App = () => {
   const addTodo = (todo) => {
     setTodos((prev) => [...prev, todo]);
     setShowForm(false);
-  };
+  }
 
   const deleteTodo = (id) => {
     console.log("ID received:", id);
@@ -22,26 +22,30 @@ const App = () => {
     setTodos((prev) => prev.filter((todo) => todo.id !== id));
   };
 
- const toggleTodo = (id) => {
-  setTodos((prev) =>
-    prev.map((todo) => {
-      if (todo.id === id) {
-        return {
-          ...todo,
-          completed: !todo.completed,
-        }
-      }
 
-      return todo;
+  const toggleTodo = (id) => {
+
+    setTodos((prev) => {
+      return prev.map((todo)=>{
+        if(todo.id == id){
+          return {
+          ...todo,
+          completed: !todo.completed
+          }
+        } 
+
+        return todo
+        
+      })
+
     })
-  )
-}
+  }
 
   return (
     <>
       <div className="py-10 px-20">
         <div>
-          <h1 className="text-2xl text-[#0f0f0f]">TO-DO</h1>
+          <h1 className="text-2xl text-[#0f0f0f]"> TO-DO </h1>
 
           <hr className="mt-4 border-gray-300" />
         </div>
@@ -67,11 +71,12 @@ const App = () => {
 
         {/* <Todo/> */}
         {todos.length === 0 && !showForm && <EmptyState />}
+
         {showForm && (
           <TodoForm onAddTodo={addTodo} onClose={() => setShowForm(false)} />
         )}
 
-        <TodoList onDeleteTodo={deleteTodo} todos={todos} />
+        <TodoList onToggleTodo={toggleTodo} onDeleteTodo={deleteTodo} todos={todos} />
       </div>
     </>
   );
