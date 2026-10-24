@@ -22,5 +22,17 @@ const addTodo = asyncHandler(async (req, res, next) => {
 })
 
 const getTodo = asyncHandler( async(req, res, next) => {
-    
+     const todos = await Todo.find();
+
+   return res.status(200)
+   .json(new ApiResponse(200, todos, "Todo fetched successfully"))
+  
 })
+
+
+
+
+export {
+  addTodo,
+  getTodo
+}

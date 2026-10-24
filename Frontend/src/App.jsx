@@ -14,32 +14,28 @@ const App = () => {
   const addTodo = (todo) => {
     setTodos((prev) => [...prev, todo]);
     setShowForm(false);
-  }
+  };
 
   const deleteTodo = (id) => {
-    console.log("ID received:", id);
-    console.log("Current todos:", todos);
+    // console.log("ID received:", id);
+    // console.log("Current todos:", todos);
     setTodos((prev) => prev.filter((todo) => todo.id !== id));
   };
 
-
   const toggleTodo = (id) => {
-
     setTodos((prev) => {
-      return prev.map((todo)=>{
-        if(todo.id == id){
+      return prev.map((todo) => {
+        if (todo.id == id) {
           return {
-          ...todo,
-          completed: !todo.completed
-          }
-        } 
+            ...todo,
+            completed: !todo.completed,
+          };
+        }
 
-        return todo
-        
-      })
-
-    })
-  }
+        return todo;
+      });
+    });
+  };
 
   return (
     <>
@@ -51,7 +47,6 @@ const App = () => {
         </div>
 
         <div className="mt-7 mb-7 flex gap-4">
-
           <button
             onClick={() => {
               setShowForm((prev) => !prev);
@@ -76,7 +71,11 @@ const App = () => {
           <TodoForm onAddTodo={addTodo} onClose={() => setShowForm(false)} />
         )}
 
-        <TodoList onToggleTodo={toggleTodo} onDeleteTodo={deleteTodo} todos={todos} />
+        <TodoList
+          onToggleTodo={toggleTodo}
+          onDeleteTodo={deleteTodo}
+          todos={todos}
+        />
       </div>
     </>
   );

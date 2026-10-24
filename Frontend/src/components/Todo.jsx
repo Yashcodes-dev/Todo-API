@@ -1,7 +1,9 @@
 import { Pencil, Trash2 } from "lucide-react";
 
 const Todo = ({ todo, onDeleteTodo, onToggleTodo }) => {
+
   return (
+
     <div className="flex items-start justify-between gap-4 rounded-xl py-4 pl-3 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
       {/* Left side */}
       <div className="flex min-w-0 items-start gap-5">
@@ -15,14 +17,18 @@ const Todo = ({ todo, onDeleteTodo, onToggleTodo }) => {
         <div className="min-w-0">
           <h2
             className={`font-semibold text-gray-900 ${
-              todo.completed ? "line-through" : "" }`}
+              todo.completed ? "line-through" : ""
+            }`}
           >
             {todo.title}
           </h2>
 
-          <p className={`text-gray-900
-           ${ todo.completed ? "line-through" : "" }`}
-          >{todo.description}</p>
+          <p
+            className={`text-gray-900
+           ${todo.completed ? "line-through" : ""}`}
+          >
+            {todo.description}
+          </p>
 
           <p className="mt-2 text-xs text-gray-400">
             Created: 03 Oct 2026 · Updated: 03 Oct 2026
@@ -44,6 +50,7 @@ const Todo = ({ todo, onDeleteTodo, onToggleTodo }) => {
         </button>
       </div>
     </div>
+
   );
 };
 
