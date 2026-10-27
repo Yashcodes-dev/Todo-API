@@ -1,8 +1,13 @@
 import express, { Router } from "express";
 import todoRouter from "../src/routes/todo.routes.js"
+import cors from "cors"
+
 
 const app = express();
 
+app.use(cors({
+    origin:"http://localhost:5173"
+}))
 
 app.use(express.json())
 
