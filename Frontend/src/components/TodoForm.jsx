@@ -54,7 +54,6 @@ const TodoForm = ({ onClose, onAddTodo }) => {
           <button
             onClick={() =>
               onAddTodo({
-                id: Date.now(),
                 title,
                 description,
                 completed: false,
