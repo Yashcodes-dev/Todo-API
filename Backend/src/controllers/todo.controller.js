@@ -40,7 +40,7 @@ const updateTodo = asyncHandler(async (req, res, next) => {
     updatedDescription === undefined &&
     status === undefined
   ) {
-    throw new ApiError(404, "any one of the filed is required");
+    throw new ApiError(400, "any one of the filed is required");
   }
 
   const updatedFields = {};

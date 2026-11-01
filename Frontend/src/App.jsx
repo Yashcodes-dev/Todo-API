@@ -84,6 +84,29 @@ const App = () => {
     setupdateShowForm(true);
   };
 
+  const handleUpdateTodo = async (updatedTodo) => {
+  const { id, title, description } = updatedTodo;
+
+  const response = await axios.patch(
+    `http://localhost:8000/api/v1/todos/${id}`,
+    { title, description }
+  );
+
+  setTodos((prev) => {
+      return prev.map((todo) => {
+        if (todo._id === id || todo.id === id) {
+          return response.data.data;
+        }
+
+        return todo;
+      });
+    });
+    setupdateShowForm(false);
+  };
+
+
+
+
   //Get todos
   useEffect(() => {
     axios
@@ -95,6 +118,8 @@ const App = () => {
         console.error(error);
       });
   }, []);
+
+
 
   return (
     <>
@@ -187,6 +212,7 @@ const App = () => {
         {updateShowForm && (
           <UpdateTodoForm
             todo={selectedTodo}
+            onUpdateTodo={handleUpdateTodo}
             onCloseForm={() => setupdateShowForm(false)}
           />
         )}
@@ -195,9 +221,10 @@ const App = () => {
           onToggleTodo={toggleTodo}
           onDeleteTodo={deleteTodo}
           setShowForm={setShowForm}
-          todos={todos}
+          todos={filteredTodos}
           onUpdateTodoForm={setupdateShowForm}
           onHandleUpdateTodoForm={handleUpdateTodoForm}
+          
         />
       </div>
     </>
